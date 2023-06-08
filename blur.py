@@ -1,8 +1,8 @@
 import cv2
 
-def blur_check(IMAGE_FILE):
+def blur_check(img):
 
-    img = cv2.imread(IMAGE_FILE)
+    # img = cv2.imread(IMAGE_FILE)
 
     grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 

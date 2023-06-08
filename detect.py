@@ -2,13 +2,15 @@ import cv2
 import numpy as np
 import torch
 from PIL import Image, ImageDraw, ImageFont
+from io import BytesIO
 
 from yolo import predict, CLASSES
 from blur import blur_check
 
 def analyze(IMAGE_FILE):
 
-    image = Image.open(IMAGE_FILE)
+    im_file = BytesIO(IMAGE_FILE)
+    image = Image.open(im_file)
     pred = predict(image)
     draw = ImageDraw.Draw(image)
 
@@ -28,7 +30,11 @@ def analyze(IMAGE_FILE):
             if round(conf,2) >= .75:
                 Output['detected'].append([int(round(x1,1)), int(round(y1,1)), int(round(x2,1)), int(round(y2,1))])
 
-    if blur_check(IMAGE_FILE) == True:
+    im_arr = np.frombuffer(IMAGE_FILE, dtype=np.uint8)  # im_arr is one-dim Numpy array
+    img = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
+
+    blur = blur_check(img)
+    if blur == True:
         Output['content'] = 'Image is Blurry'
     elif per_c == 0:
         Output['content'] = 'No person Detected'
