@@ -11,9 +11,7 @@ from blur import blur_check
 def analyze(IMAGE_FILE):
 
     IMAGE_FILE = base64.b64decode(IMAGE_FILE)
-
     pred = predict(IMAGE_FILE)
-
     im_file = BytesIO(IMAGE_FILE)
     image = Image.open(im_file)
     draw = ImageDraw.Draw(image)
