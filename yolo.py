@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import torch
 from PIL import Image, ImageDraw, ImageFont
+import base64
+from io import BytesIO
 
 from models.experimental import attempt_load
 from utils.general import non_max_suppression
@@ -26,8 +28,13 @@ allowed = ["person", "tv", "laptop", "mouse", "remote", "keyboard", "cell phone"
 model = attempt_load(WEIGHTS, map_location=DEVICE)
 
 
-def predict(image, image_size=640):
-    image = np.asarray(image)
+def predict(img, image_size=640):
+
+    im_bytes = base64.b64decode(file)   # im_bytes is a binary image
+    im_file = BytesIO(im_bytes)  # convert image to file-like object
+    img = Image.open(im_file)
+
+    image = np.asarray(img)
 
     # Resize image to the inference size
     ori_h, ori_w = image.shape[:2]
@@ -50,3 +57,5 @@ def predict(image, image_size=640):
 
     return pred
 
+
+# print(predict(file_in_b64))

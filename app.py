@@ -26,9 +26,8 @@ def webcam(sid, data):
                 "conf": 1
             }]
         }
-    im_bytes = base64.b64decode(data)
 
-    output = analyze(im_bytes)
+    output = analyze(data)
 
     return output
 
