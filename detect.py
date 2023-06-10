@@ -26,8 +26,6 @@ def analyze(IMAGE_FILE):
     for x1, y1, x2, y2, conf, class_id in pred:
         object_text = CLASSES[int(class_id)]
 
-        print(object_text)
-
         if object_text == "person":
             per_c += 1
         if round(conf,2) >= .75:
