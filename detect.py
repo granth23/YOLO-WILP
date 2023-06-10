@@ -28,11 +28,12 @@ def analyze(IMAGE_FILE):
     for x1, y1, x2, y2, conf, class_id in pred:
         object_text = CLASSES[int(class_id)]
 
+        print(object_text)
+
         if object_text == "person":
             per_c += 1
-        else:
-            if round(conf,2) >= .75:
-                Output['detected'].append([int(round(x1,1)), int(round(y1,1)), int(round(x2,1)), int(round(y2,1))])
+        if round(conf,2) >= .75:
+            Output['detected'].append([int(round(x1,1)), int(round(y1,1)), int(round(x2,1)), int(round(y2,1))])
 
     im_arr = np.frombuffer(IMAGE_FILE, dtype=np.uint8)  # im_arr is one-dim Numpy array
     img = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
