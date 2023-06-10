@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import torch
 from PIL import Image, ImageDraw, ImageFont
-import base64
 from io import BytesIO
 
 from models.experimental import attempt_load
@@ -30,8 +29,7 @@ model = attempt_load(WEIGHTS, map_location=DEVICE)
 
 def predict(img, image_size=640):
 
-    im_bytes = base64.b64decode(file)   # im_bytes is a binary image
-    im_file = BytesIO(im_bytes)  # convert image to file-like object
+    im_file = BytesIO(img)  # convert image to file-like object
     img = Image.open(im_file)
 
     image = np.asarray(img)
