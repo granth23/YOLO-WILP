@@ -1,7 +1,7 @@
 import eventlet
 import socketio
 import os
-
+import base64
 from blur import blur_check
 from detect import analyze
 
@@ -25,9 +25,11 @@ def webcam(sid, data):
                 "conf": 1
             }]
         }
+    detect = analyze(str(data))
+
     output = {
         "blurry": blur_check(data),
-        "detected": analyze(data)
+        "detected": analyze(str(data))
     }
     return output
 
@@ -36,4 +38,4 @@ def disconnect(sid):
     print('disconnect ', sid)
 
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('localhost', 5000)), app)
+    eventlet.wsgi.server(eventlet.listen(('127.0.0.1', 5000)), app)

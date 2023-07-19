@@ -15,7 +15,7 @@ def analyze(IMAGE_FILE):
         object_text = CLASSES[int(class_id)]
         if object_text in allowed:
             temp = {}
-            temp['conf'] = conf
+            temp['conf'] = int(conf)
             temp['type'] = object_text
             temp['coords'] = [int(round(x1,1)), int(round(y1,1)), int(round(x2,1)), int(round(y2,1))]
             Output.append(temp)
