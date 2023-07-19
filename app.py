@@ -1,11 +1,9 @@
 import eventlet
 import socketio
-from detect import analyze
-from PIL import Image
-from io import BytesIO
 import os
-import base64
+
 from blur import blur_check
+from detect import analyze
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
