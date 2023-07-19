@@ -1,10 +1,11 @@
 import eventlet
 import socketio
+from detect import analyze
 from PIL import Image
 from io import BytesIO
 import os
 import base64
-from detect import analyze
+from blur import blur_check
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
@@ -26,9 +27,10 @@ def webcam(sid, data):
                 "conf": 1
             }]
         }
-
-    output = analyze(data)
-
+    output = {
+        "blurry": blur_check(data),
+        "detected": analyze(data)
+    }
     return output
 
 @sio.event
@@ -36,4 +38,4 @@ def disconnect(sid):
     print('disconnect ', sid)
 
 if __name__ == '__main__':
-    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
+    eventlet.wsgi.server(eventlet.listen(('localhost', 5000)), app)
