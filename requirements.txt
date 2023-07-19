@@ -37,4 +37,4 @@ tqdm==4.65.0
 typing-extensions==4.7.1
 tzdata==2023.3
 # urllib3==2.0.3
-zipp==3.16.2
+# zipp==3.16.2
