@@ -5,7 +5,7 @@ charset-normalizer==3.2.0
 colorama==0.4.6
 cryptography==41.0.2
 cycler==0.11.0
-dnspython==2.4.0
+dnspython
 eventlet==0.33.3
 exceptiongroup==1.1.2
 fonttools
