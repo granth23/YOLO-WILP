@@ -4,3 +4,4 @@ Pillow==9.0.1
 numpy==1.21.5
 opencv-python==4.6.0.66
 torch==1.13.1
+pandas
