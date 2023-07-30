@@ -1,6 +1,3 @@
-import sys
-sys.path.append(r"C:/Users/Granth Bagadia/Downloads/yolov7")
-
 import math
 from copy import copy
 from pathlib import Path
