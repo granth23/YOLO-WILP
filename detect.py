@@ -22,3 +22,5 @@ def analyze(IMAGE_FILE):
 
     return Output
 
+from file import base64file
+print(analyze(base64file))
