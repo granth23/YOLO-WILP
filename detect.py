@@ -21,6 +21,3 @@ def analyze(IMAGE_FILE):
             Output.append(temp)
 
     return Output
-
-from file import base64file
-print(analyze(base64file))
