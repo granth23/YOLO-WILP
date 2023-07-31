@@ -1,12 +1,13 @@
+from test import weights
+
+weights()
+
 import eventlet
 import socketio
 import os
 import base64
 from blur import blur_check
 from detect import analyze
-from test import weights
-
-weights()
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
