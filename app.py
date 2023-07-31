@@ -1,7 +1,3 @@
-from test import weights
-
-weights()
-
 import eventlet
 import socketio
 import os

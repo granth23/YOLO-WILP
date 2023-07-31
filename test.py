@@ -13,3 +13,5 @@ def weights():
         URL = "https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt"
         response = requests.get(URL)
         open(path, "wb").write(response.content)
+
+weights()
