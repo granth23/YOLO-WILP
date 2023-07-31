@@ -4,6 +4,9 @@ import os
 import base64
 from blur import blur_check
 from detect import analyze
+import wget
+
+wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt")
 
 sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
