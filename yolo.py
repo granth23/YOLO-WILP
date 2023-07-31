@@ -7,7 +7,7 @@ from io import BytesIO
 from models.experimental import attempt_load
 from utils.general import non_max_suppression
 
-WEIGHTS = "models/yolov7.pt"
+WEIGHTS = "yolov7.pt"
 DEVICE = "cpu"
 IMAGE_SIZE = 640
 
