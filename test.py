@@ -14,4 +14,8 @@ def weights():
         response = requests.get(URL)
         open(path, "wb").write(response.content)
 
-weights()
+if __name__ == "__main__":
+    try:
+        weights()
+    except Exception as e:
+        print(f'error is {e}')
