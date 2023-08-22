@@ -1,4 +1,3 @@
-import streamlit as st
 import wget
 import os
 
@@ -37,6 +36,7 @@ def webcam(sid, data):
         "blurry": blur_check(data),
         "detected": analyze(str(data))
     }
+    print(output)
     return output
 
 @sio.event
@@ -45,6 +45,3 @@ def disconnect(sid):
 
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
-
-x = st.slider('Select a value')
-st.write(x, 'squared is', x * x)
