@@ -1,10 +1,12 @@
+import streamlit as st
 import wget
+import os
 
-wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt")
+if os.path.isfile("yolov7.pt") == False:
+    wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt")
 
 import eventlet
 import socketio
-import os
 import base64
 from blur import blur_check
 from detect import analyze
@@ -43,3 +45,6 @@ def disconnect(sid):
 
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
+
+x = st.slider('Select a value')
+st.write(x, 'squared is', x * x)
