@@ -30,13 +30,11 @@ def webcam(sid, data):
                 "conf": 1
             }]
         }
-    detect = analyze(str(data))
 
     output = {
         "blurry": blur_check(data),
         "detected": analyze(str(data))
     }
-    print(output)
     return output
 
 @sio.event
