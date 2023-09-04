@@ -1,5 +1,6 @@
 import wget
 import os
+import torch
 
 if os.path.isfile("yolov7.pt") == False:
     wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt")
