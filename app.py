@@ -4,6 +4,11 @@ import os
 if os.path.isfile("yolov7.pt") == False:
     wget.download("https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt")
 
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Device:", device)
+for i in range(torch.cuda.device_count()):
+   print(torch.cuda.get_device_properties(i).name)
+
 import eventlet
 import socketio
 import base64

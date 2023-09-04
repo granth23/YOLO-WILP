@@ -8,8 +8,9 @@ from models.experimental import attempt_load
 from utils.general import non_max_suppression
 
 WEIGHTS = "yolov7.pt"
-DEVICE = "cpu"
+DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 IMAGE_SIZE = 640
+print(DEVICE)
 
 CLASSES = [
     "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train", "truck", "boat", "traffic light",
@@ -47,7 +48,10 @@ def predict(img, image_size=640):
         pred = model(image_pt[None], augment=False)[0]
 
     # NMS
-    pred = non_max_suppression(pred)[0].cpu().numpy()
+    if torch.cuda.is_available():
+        pred = non_max_suppression(pred)[0].cuda().numpy() 
+    else:
+        pred = non_max_suppression(pred)[0].cpu().numpy()    
 
     # Resize boxes to the original image size
     pred[:, [0, 2]] *= ori_w / image_size
